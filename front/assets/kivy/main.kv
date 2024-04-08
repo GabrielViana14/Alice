@@ -1,14 +1,65 @@
-Screen:
+MDScreen:
     BoxLayout:
         orientation: 'vertical'
         
         MDTopAppBar:
-            title: "{AI_name}"
-            halign: 'left'
+            title: app.bot_name
+            anchor_title: "left"
             pos_hint: {'top': 0}
             md_bg_color: app.hex_to_color("#FD91A4")
             left_action_items: [["chat"]]
             right_action_items: [["cog"]]
 
-        MDBoxLayout:
-
+        MDScrollView:
+            do_scroll_x: False
+            do_scroll_y: True
+            size_hint_y: 1
+            BoxLayout:
+                id: chat_list
+                orientation: "vertical"
+                padding: "20dp"
+                size: (root.width, root.height)
+                size_hint_y: None
+                height: self.minimum_height
+                pos_hint: {'top':10}
+                cols: 1
+                spacing: 20
+                MDLabel:
+                    id: user_response
+                    text: "Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore mag"
+                    multiline: True
+                    size_hint_x: 0.7
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    color: app.hex_to_color("#FFFFFF")
+                    halign: 'right'  
+                    valign: 'top'
+                    pos_hint:{'right':1}
+                    padding: "20px"
+                    canvas.before:
+                        Color:
+                            rgba: app.hex_to_color("#5184C3")
+                        RoundedRectangle:
+                            pos: self.pos 
+                            size:self.size 
+                            radius:20,0,20,20
+                MDLabel:
+                    id: bot_response
+                    text: "oláaaaaa"
+                    multiline:True
+                    color: app.hex_to_color("#FFFFFF")
+                    halign: 'left'  
+                    valign: 'top'
+                    size_hint_x: 0.7
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    pos_hint:{'left':1}
+                    padding: "20px"
+                    canvas.before:
+                        Color:
+                            rgba: app.hex_to_color("#4D5C6F")
+                        RoundedRectangle:
+                            pos: self.pos 
+                            size:self.size 
+                            radius:0,20,20,20
+                

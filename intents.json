@@ -1,0 +1,83 @@
+{
+    "intents": [
+      {
+        "tag": "saudacao",
+        "patterns": [
+          "Oi",
+          "Olá",
+          "Como você está?",
+          "Tem alguém aí?",
+          "Olá",
+          "Bom dia"
+        ],
+        "responses": [
+          "Oi :-)",
+          "Olá, obrigado por visitar",
+          "Olá, o que posso fazer por você?",
+          "Olá, como posso ajudar?"
+        ]
+      },
+      {
+        "tag": "despedida",
+        "patterns": ["Tchau", "Até mais tarde", "Adeus"],
+        "responses": [
+          "Até mais tarde, obrigado por visitar",
+          "Tenha um bom dia",
+          "Tchau! Volte novamente em breve."
+        ]
+      },
+      {
+        "tag": "agradecimento",
+        "patterns": ["Obrigado", "Obrigado", "Isso é útil", "Muito obrigado!"],
+        "responses": ["Feliz em ajudar!", "A qualquer momento!", "É um prazer"]
+      },
+      {
+        "tag": "pesquisar",
+        "patterns": [
+          "Pesquise por",
+          "Encontre informações sobre",
+          "Você pode encontrar",
+          "O que você sabe sobre"
+        ],
+        "responses": [
+          "Posso ajudar a encontrar informações sobre qualquer coisa. Por favor, me diga o que você gostaria de saber."
+        ]
+      },
+      {
+        "tag": "previsao_tempo",
+        "patterns": [
+          "Qual é a previsão do tempo hoje?",
+          "Como estará o clima amanhã?",
+          "Quero saber a previsão do tempo",
+          "Como está o clima agora?"
+        ],
+        "responses": [
+          "Você gostaria de saber a previsão do tempo de qual cidade?"
+        ]
+      },
+      {
+        "tag": "piada",
+        "patterns": [
+          "Conte-me uma piada!",
+          "Me diga algo engraçado!",
+          "Você conhece uma piada?"
+        ],
+        "responses": [
+          "Por que o hipster queimou a boca? Ele tomou o café antes de esfriar.",
+          "O que o búfalo disse quando seu filho foi para a faculdade? Bison."
+        ]
+      },
+      {
+        "tag": "horoscopo",
+        "patterns": [
+          "Qual é o horóscopo de hoje?",
+          "Me conte o horóscopo do meu signo.",
+          "Quero saber meu horóscopo diário."
+        ],
+        "responses": [
+          "Para qual signo você gostaria de saber o horóscopo?"
+        ]
+      }
+    ]
+  }
+  

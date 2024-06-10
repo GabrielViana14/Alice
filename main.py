@@ -5,10 +5,12 @@ from kivy.core.window import Window
 from kivy.app import App
 import threading
 from front.front import MainApp
+from machine_learning.chat import Chat
 
 bot_name = "alice"
 audio = sr.Recognizer()
 assistente = pyttsx3.init()
+chat_bot = Chat()
 
 class Voice:
     def __init__(self):
@@ -36,18 +38,18 @@ class Voice:
                     voz = audio.listen(source)
                     comando = audio.recognize_google(voz, language='pt-BR')
                     comando = comando.lower()
-                    if comando =="fechar" or comando == "sair" :
-                        Clock.schedule_once(lambda dt: self.on_close(), 0)
-                        break
                     if bot_name in comando or self.bot_ativo:
                         if not self.bot_ativo:
                             self.bot_ativo = True  # Ativa o bot
                         Clock.schedule_once(lambda dt: self.abrir_interface(), 0)
                         Clock.schedule_once(lambda dt: self.resposta_user(comando), 0)
-                        resposta = "Olá como posso te ajudar!"
+                        resposta = chat_bot.resposta(comando)
                         assistente.say(resposta)
                         Clock.schedule_once(lambda dt: self.resposta_bot(resposta), 0)
                         assistente.runAndWait()
+                        if comando =="fechar" or comando == "sair" or comando == "encerrar":
+                            Clock.schedule_once(lambda dt: self.on_close(), 0)
+                            break
             except Exception as e:
                 print(f"Aconteceu um erro: {e}")
                 Clock.schedule_once(lambda dt: self.hide_window(), 0)

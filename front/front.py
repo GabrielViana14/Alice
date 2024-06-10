@@ -5,6 +5,12 @@ from kivy.utils import get_color_from_hex
 from kivymd.uix.label import MDLabel
 from kivy.graphics import Color, RoundedRectangle
 
+arquivo = "front/assets/kivy/main.kv"
+
+#Parametros alteraveis
+bot_name = "Alice"
+
+
 class LabelBot(MDLabel):
     def __init__(self, **kwargs):
         super(LabelBot, self).__init__(**kwargs)
@@ -38,14 +44,14 @@ class LabelUser(MDLabel):
 
 
 class MainApp(MDApp):
-    #Parametros alteraveis
-    bot_name = "Alice"
+    
 
 
     def hex_to_color(self, hex_color):
         return get_color_from_hex(hex_color)
     
     def build(self):
+        self.bot_name = bot_name
         self.theme_cls.theme_style = "Light"
         Window.size = (350, 350)
         Window.top = 400  
@@ -53,7 +59,7 @@ class MainApp(MDApp):
         Window.always_on_top = True  # Mantém a janela sempre no topo
         self.title = "Assistente virtual" # Titulo da janela
         self.clearcolor = self.hex_to_color("#FD91A4")
-        return Builder.load_file("front/assets/kivy/main.kv")
+        return Builder.load_file(arquivo)
     
 
     def bot_response(self,text):
@@ -69,7 +75,7 @@ class MainApp(MDApp):
         )
         bot_resposta.bind(texture_size=bot_resposta.setter('size'))
         self.root.ids.chat_list.add_widget(bot_resposta)
-        self.root.ids.scroll_view.scroll_y = 0
+        'self.root.ids.scroll_view.scroll_y = 0'
 
     def user_response(self,text):
         user_resposta = LabelUser(
@@ -86,4 +92,8 @@ class MainApp(MDApp):
         self.root.ids.chat_list.add_widget(user_resposta)
         self.root.ids.scroll_view.scroll_y = 0
     
-    
+
+if __name__ == "__main__":
+    app = MainApp()
+    arquivo = "assets/kivy/main.kv"
+    app.run()

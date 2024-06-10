@@ -38,6 +38,11 @@ class Voice:
                     voz = audio.listen(source)
                     comando = audio.recognize_google(voz, language='pt-BR')
                     comando = comando.lower()
+                    if comando =="fechar" or comando == "sair" or comando == "encerrar":
+                        Clock.schedule_once(lambda dt: self.resposta_user(comando), 0)
+                        Clock.schedule_once(lambda dt: self.resposta_bot("Fechando"), 0)
+                        Clock.schedule_once(lambda dt: self.on_close(), 3)
+                        break
                     if bot_name in comando or self.bot_ativo:
                         if not self.bot_ativo:
                             self.bot_ativo = True  # Ativa o bot
@@ -47,9 +52,7 @@ class Voice:
                         assistente.say(resposta)
                         Clock.schedule_once(lambda dt: self.resposta_bot(resposta), 0)
                         assistente.runAndWait()
-                        if comando =="fechar" or comando == "sair" or comando == "encerrar":
-                            Clock.schedule_once(lambda dt: self.on_close(), 0)
-                            break
+                        
             except Exception as e:
                 print(f"Aconteceu um erro: {e}")
                 Clock.schedule_once(lambda dt: self.hide_window(), 0)
@@ -64,6 +67,8 @@ class Voice:
     def on_close(self, *args):
         print("Encerrando o programa...")
         self.app.stop()
+        Window.close()
+
 
     def resposta_user(self, texto):
         if self.app:

@@ -50,4 +50,7 @@ class Chat():
 
 if __name__ == "__main__":
     answer = Chat()
-    print(answer.resposta("Bom dia!"))
+    pergunta = ""
+    while pergunta.lower() != "sair":
+        pergunta = input("Entrada: ")
+        print(answer.resposta(pergunta))

@@ -4,6 +4,7 @@ from kivy.lang import Builder
 from kivy.utils import get_color_from_hex
 from kivymd.uix.label import MDLabel
 from kivy.graphics import Color, RoundedRectangle
+from kivy.clock import Clock
 
 arquivo = "front/assets/kivy/main.kv"
 
@@ -44,7 +45,14 @@ class LabelUser(MDLabel):
 
 
 class MainApp(MDApp):
-    
+
+    """
+    #Função para testar
+    def on_start(self):
+        Clock.schedule_once(lambda dt:self.user_response("Testando user response"),5)
+        Clock.schedule_once(lambda dt:self.bot_response("testando bot response"),7)
+        Clock.schedule_once(lambda dt: self.user_response("Testando user response"), 9)
+    """
 
 
     def hex_to_color(self, hex_color):
@@ -97,3 +105,4 @@ if __name__ == "__main__":
     app = MainApp()
     arquivo = "assets/kivy/main.kv"
     app.run()
+
